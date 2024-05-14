@@ -220,13 +220,15 @@ static void test_task(void *pvParameters)
 {
 	u8g2_t u8g2;
 	char str[40] = {'\0'};
-
 	//u8g2_InitInterface(&u8g2);
 	esp32_u8g2_setup(&u8g2);
-	u8g2_InitDisplay(&u8g2);
+	ESP_LOGI("DEBUG","U8G2 setUp");
+	u8g2_InitDisplay(&u8g2);//WDT Trigger
+	ESP_LOGI("DEBUG","U8G2 InitDisplay");
 	u8g2_SetPowerSave(&u8g2, 0);
+	ESP_LOGI("DEBUG","U8G2 SetPowerSave");
 	u8g2_ClearBuffer(&u8g2);
-
+	ESP_LOGI("DEBUG","U8G2 ClearBuffer");
 	u8g2_FirstPage(&u8g2);
 
 
@@ -262,6 +264,7 @@ static void test_task(void *pvParameters)
 	u8g2_SetFont(&u8g2, u8g2_font_10x20_mf);
     u8g2_DrawStr(&u8g2, 50,100,"Hello World!");
 	u8g2_NextPage(&u8g2);
+	
 	while(1) {
 		gpio_set_level(PIN_NUM_LED, 0);
 		mdelay(1000);
@@ -273,6 +276,6 @@ static void test_task(void *pvParameters)
 void app_main(void)
 {
 	//xTaskCreate(&time_app_task, "time_app_task", 10240, NULL, 5, NULL);
-	xTaskCreate(&test_task, "test_task", 8196, NULL, 5, NULL);
+	xTaskCreatePinnedToCore(&test_task, "test_task", 8196, NULL, 10, NULL,1);
 }
 

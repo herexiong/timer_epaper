@@ -2,3 +2,18 @@
 
 1. 驱动已支持2in66三色， 2in66两色，2in13三色
 2. 使用联网校准，目前使用的是百度服务器返回的时间戳
+
+update date:2024.5.14
+by:herexiong
+
+1.修改项目结构支持ESP-IDF4.4.7
+2.修改芯片为ESP32C3
+3.修改SPI对应IO接口
+4.将SPI接口修改SPI2_HOST
+5.SPI DMA channel 修改为auto-alloc
+6.新增.gitignore文件
+
+测试开发板->合宙ESP32-C3经典板
+[屏幕驱动板开源链接](https://oshwhub.com/small_da/ESP32C3mo-shui-ping-bai-jian)
+[屏幕链接](https://m.tb.cn/h.gXF1RPj089UaOUQ?tk=nbdiWu9TP3W)
+

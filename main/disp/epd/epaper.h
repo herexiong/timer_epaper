@@ -12,16 +12,24 @@ typedef int16_t s16;
 typedef int8_t s8;
 #endif
 
-#define PIN_NUM_RST		4
-#define PIN_NUM_MISO	12
-#define PIN_NUM_MOSI	13
-#define PIN_NUM_CLK		14
-#define PIN_NUM_CS		15
-#define PIN_NUM_DC		18
-#define PIN_NUM_BUSY	5
+//hx:change chip pins
+// #define PIN_NUM_RST		4
+// #define PIN_NUM_MISO	12
+// #define PIN_NUM_MOSI	13
+// #define PIN_NUM_CLK		14
+// #define PIN_NUM_CS		15
+// #define PIN_NUM_DC		18
+// #define PIN_NUM_BUSY	5
+#define PIN_NUM_RST		5
+#define PIN_NUM_MISO	
+#define PIN_NUM_MOSI	3
+#define PIN_NUM_CLK		2
+#define PIN_NUM_CS		7
+#define PIN_NUM_DC		4
+#define PIN_NUM_BUSY	6
 
 
-//-----------------LCD¶Ë¿Ú¶¨Òå---------------- 
+//-----------------LCDï¿½Ë¿Ú¶ï¿½ï¿½ï¿½---------------- 
 
 #define EPD_SCLK_Clr() gpio_set_level(PIN_NUM_CLK, 0) //SCL=SCLK
 #define EPD_SCLK_Set() gpio_set_level(PIN_NUM_CLK, 1)

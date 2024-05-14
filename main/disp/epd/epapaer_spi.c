@@ -28,9 +28,12 @@ spi_device_interface_config_t devcfg={
 void epaper_spi_init(spi_host_device_t host_id)
 {
 	esp_err_t ret;
-
+	ESP_LOGI("DEBUG","spi_bus_initialize start");
 	//Initialize the SPI bus
-	ret = spi_bus_initialize(host_id, &buscfg, 2);
+	// ret = spi_bus_initialize(host_id, &buscfg, 2);
+	// hx:chip only support spi dma channel auto-alloc
+	ret = spi_bus_initialize(host_id, &buscfg, SPI_DMA_CH_AUTO);
+	ESP_LOGI("DEBUG","spi_bus_initialize end");
 	ESP_ERROR_CHECK(ret);
 	//Attach the LCD to the SPI bus
 	ret = spi_bus_add_device(host_id, &devcfg, &spi);

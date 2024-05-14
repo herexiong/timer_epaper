@@ -205,7 +205,9 @@ static int epaper_104x212_init(struct disp_dev_st *dev)
 		return -1;
 	}
 
-	epaper_spi_init(HSPI_HOST);
+	//hx
+	// epaper_spi_init(HSPI_HOST);
+	epaper_spi_init(SPI2_HOST);
 	Epaper_gpio_Init();
 
 	drv = dev->drv;

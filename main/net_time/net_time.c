@@ -16,7 +16,7 @@
 #include "nvs_flash.h"
 #include "esp_event.h"
 #include "esp_netif.h"
-#include "protocol_examples_common.h"
+// #include "protocol_examples_common.h"//hx
 #include "esp_tls.h"
 #if CONFIG_MBEDTLS_CERTIFICATE_BUNDLE
 #include "esp_crt_bundle.h"
@@ -360,7 +360,7 @@ static int app_wifi_get_time(struct ntime_st *ntime)
 	EventBits_t bits;
 	ESP_LOGE(TAG, "%s ns %p", __func__, ntime);
 
-	ESP_ERROR_CHECK(example_connect());
+	// ESP_ERROR_CHECK(example_connect());//hx
 
     xTaskCreate(&http_test_task, "http_test_task", 8192, NULL, 5, NULL);
     bits = xEventGroupWaitBits(wifi_events, GET_TIME_DONE_EVENT, 1, 0, 7000/portTICK_RATE_MS);
@@ -368,7 +368,7 @@ static int app_wifi_get_time(struct ntime_st *ntime)
 		ESP_LOGI(TAG, "GET_TIME_DONE");
 		xEventGroupClearBits(wifi_events, GET_TIME_DONE_EVENT);
 	}
-	ESP_ERROR_CHECK(example_disconnect());
+	// ESP_ERROR_CHECK(example_disconnect());//hx
 	ESP_LOGE(TAG, "date %d:%d:%d", ns.hour, ns.min, ns.sec);
 
 	ntime->hour = ns.hour;

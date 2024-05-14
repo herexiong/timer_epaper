@@ -7,13 +7,21 @@
 #include "esp_log.h"
 #include "disp_drv.h"
 
-#define PIN_NUM_RST		4
-#define PIN_NUM_MISO	12
-#define PIN_NUM_MOSI	13
-#define PIN_NUM_CLK		14
-#define PIN_NUM_CS		15
-#define PIN_NUM_DC		18
-#define PIN_NUM_BUSY	5
+//hx,change pins
+// #define PIN_NUM_RST		4
+// #define PIN_NUM_MISO	12
+// #define PIN_NUM_MOSI	13
+// #define PIN_NUM_CLK		14
+// #define PIN_NUM_CS		15
+// #define PIN_NUM_DC		18
+// #define PIN_NUM_BUSY	5
+#define PIN_NUM_RST		5
+#define PIN_NUM_MISO	//not used
+#define PIN_NUM_MOSI	3
+#define PIN_NUM_CLK		2
+#define PIN_NUM_CS		7
+#define PIN_NUM_DC		4
+#define PIN_NUM_BUSY	6
 
 #define EPD_296_152_HIGHT 296
 #define EPD_296_152_WIDTH 152
@@ -369,7 +377,10 @@ static int epaper_2in66_init(struct disp_dev_st *dev)
 		return -1;
 	}
 
-	epaper_spi_init(HSPI_HOST);
+	//hx
+	// epaper_spi_init(HSPI_HOST);
+	epaper_spi_init(SPI2_HOST);
+
 	Epaper_gpio_Init();
 
 	drv = dev->drv;
